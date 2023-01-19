@@ -20,7 +20,7 @@ app.get('/rmp/:id', async (req, res) => {
 
     setTimeout((() => {
         res.json(json)
-    }), 500)
+    }), 1000)
     //res.json({"result": "success"})
 })
 
