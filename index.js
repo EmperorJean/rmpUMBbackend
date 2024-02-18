@@ -59,14 +59,18 @@ async function main(id) {
             var inner = {}
 
             let arr = [];
-            res["name"] = `${$("#root > div > div > div.PageWrapper__StyledPageWrapper-sc-3p8f0h-0.cCBygY > div.TeacherRatingsPage__TeacherBlock-sc-1gyr13u-1.jMpSNb > div.TeacherInfo__StyledTeacher-ti1fio-1.kFNvIp > div:nth-child(2) > div.NameTitle__Name-dowf0z-0.cfjPUG > span:nth-child(1)").text()} ${$("#root > div > div > div.PageWrapper__StyledPageWrapper-sc-3p8f0h-0.cCBygY > div.TeacherRatingsPage__TeacherBlock-sc-1gyr13u-1.jMpSNb > div.TeacherInfo__StyledTeacher-ti1fio-1.kFNvIp > div:nth-child(2) > div.NameTitle__Name-dowf0z-0.cfjPUG > span.NameTitle__LastNameWrapper-dowf0z-2.glXOHH").text()}`
-            res['rating'] = `${$("#root > div > div > div.PageWrapper__StyledPageWrapper-sc-3p8f0h-0.cCBygY > div.TeacherRatingsPage__TeacherBlock-sc-1gyr13u-1.jMpSNb > div.TeacherInfo__StyledTeacher-ti1fio-1.kFNvIp > div:nth-child(1) > div.RatingValue__AvgRating-qw8sqy-1.gIgExh > div > div.RatingValue__Numerator-qw8sqy-2.liyUjw").text()}/5`
-            res['wta'] = `${$("#root > div > div > div.PageWrapper__StyledPageWrapper-sc-3p8f0h-0.cCBygY > div.TeacherRatingsPage__TeacherBlock-sc-1gyr13u-1.jMpSNb > div.TeacherInfo__StyledTeacher-ti1fio-1.kFNvIp > div.TeacherFeedback__StyledTeacherFeedback-gzhlj7-0.cxVUGc > div:nth-child(1) > div.FeedbackItem__FeedbackNumber-uof32n-1.kkESWs").text()}`
-            res['level'] = `${$("#root > div > div > div.PageWrapper__StyledPageWrapper-sc-3p8f0h-0.cCBygY > div.TeacherRatingsPage__TeacherBlock-sc-1gyr13u-1.jMpSNb > div.TeacherInfo__StyledTeacher-ti1fio-1.kFNvIp > div.TeacherFeedback__StyledTeacherFeedback-gzhlj7-0.cxVUGc > div:nth-child(2) > div.FeedbackItem__FeedbackNumber-uof32n-1.kkESWs").text()}`
-            res['totalRatings'] = `${$("#root > div > div > div.PageWrapper__StyledPageWrapper-sc-3p8f0h-0.cCBygY > div.TeacherRatingsPage__TeacherBlock-sc-1gyr13u-1.jMpSNb > div.TeacherInfo__StyledTeacher-ti1fio-1.kFNvIp > div:nth-child(1) > div.RatingValue__NumRatings-qw8sqy-0.jMkisx > div > a").text()}`
+            res["name"] = `${$("#root > div > div > div.PageWrapper__StyledPageWrapper-sc-3p8f0h-0.lcpsHk > div.TeacherRatingsPage__TeacherBlock-sc-1gyr13u-1.jMpSNb > div.TeacherInfo__StyledTeacher-ti1fio-1.kFNvIp > div:nth-child(2) > div.NameTitle__Name-dowf0z-0.cfjPUG").text()}`
+            res['rating'] = `${$("#root > div > div > div.PageWrapper__StyledPageWrapper-sc-3p8f0h-0.lcpsHk > div.TeacherRatingsPage__TeacherBlock-sc-1gyr13u-1.jMpSNb > div.TeacherInfo__StyledTeacher-ti1fio-1.kFNvIp > div:nth-child(1) > div.RatingValue__AvgRating-qw8sqy-1.gIgExh > div > div.RatingValue__Numerator-qw8sqy-2.liyUjw").text()}/5`
+            res['wta'] = `${$("#root > div > div > div.PageWrapper__StyledPageWrapper-sc-3p8f0h-0.lcpsHk > div.TeacherRatingsPage__TeacherBlock-sc-1gyr13u-1.jMpSNb > div.TeacherInfo__StyledTeacher-ti1fio-1.kFNvIp > div.TeacherFeedback__StyledTeacherFeedback-gzhlj7-0.cxVUGc > div:nth-child(1) > div.FeedbackItem__FeedbackNumber-uof32n-1.kkESWs").text()}`
+            res['level'] = `${$("#root > div > div > div.PageWrapper__StyledPageWrapper-sc-3p8f0h-0.lcpsHk > div.TeacherRatingsPage__TeacherBlock-sc-1gyr13u-1.jMpSNb > div.TeacherInfo__StyledTeacher-ti1fio-1.kFNvIp > div.TeacherFeedback__StyledTeacherFeedback-gzhlj7-0.cxVUGc > div:nth-child(2) > div.FeedbackItem__FeedbackNumber-uof32n-1.kkESWs").text()}`
+            res['totalRatings'] = parseInt(`${$("#root > div > div > div.PageWrapper__StyledPageWrapper-sc-3p8f0h-0.lcpsHk > div.TeacherRatingsPage__TeacherBlock-sc-1gyr13u-1.jMpSNb > div.TeacherInfo__StyledTeacher-ti1fio-1.kFNvIp > div:nth-child(1) > div.RatingValue__NumRatings-qw8sqy-0.jMkisx > div > a").text()}`)
             res['link'] = `https://www.ratemyprofessors.com/professor?tid=${id}`
             let count = 0;
-
+            
+            if (isNaN( res['totalRatings'])) {
+                res['totalRatings'] = 0;
+            }
+            
             $("#ratingsList  li > div > div > div.Rating__RatingInfo-sc-1rhvpxz-3.kEVEoU").each((i, elm) => {
 
                 count++;
